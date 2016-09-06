@@ -8,7 +8,7 @@
 
 /* hard-coded data! */
 var $albums;
-
+var allAlbums = [];
 /* end of hard-coded data */
 
 
@@ -39,17 +39,35 @@ $(document).ready(function() {
   });*/
   $('#album-form').on('submit', function(event){
     event.preventDefault();
-    var data = $(this).serialize();
-    console.log(data);
+    // var data = $(this).serialize();
+    // console.log(data)
+    $.ajax({
+      method: 'POST',
+      url: '/api/albums',
+      data: $('#album-form').serialize(),
+      success: newAlbumSuccess,
+      error: newAlbumError
+    });
     $('#album-form').trigger('reset');
   });
+
+  function newAlbumError() {
+    console.log('ERROR')
+  };
+
+  function newAlbumSuccess(json) {
+    console.log("I'm Here!")
+    $('#album-form input').val('');
+    allAlbums.push(json);
+    renderAlbum();
+  }
+
   function renderAlbum(album) {
     console.log('rendering album:', album);
     var albumsHtml = template(album);
     $albums.append(albumsHtml);
   }
 });
-
 
 
 

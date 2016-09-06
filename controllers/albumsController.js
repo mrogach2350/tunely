@@ -18,7 +18,10 @@ function index(req, res) {
 }
 
 function create(req, res) {
-  
+  console.log(req.body);
+  // var newAlbum = new db.Album({
+  //   name:
+  // });
 }
 
 function show(req, res) {
