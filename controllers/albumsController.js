@@ -18,7 +18,7 @@ function index(req, res) {
 }
 
 function create(req, res) {
-  // FILL ME IN !
+  
 }
 
 function show(req, res) {

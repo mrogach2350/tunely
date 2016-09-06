@@ -37,7 +37,12 @@ $(document).ready(function() {
   /*sampleAlbums.forEach(function(input){
     renderAlbum(input);
   });*/
-
+  $('#album-form').on('submit', function(event){
+    event.preventDefault();
+    var data = $(this).serialize();
+    console.log(data);
+    $('#album-form').trigger('reset');
+  });
   function renderAlbum(album) {
     console.log('rendering album:', album);
     var albumsHtml = template(album);
