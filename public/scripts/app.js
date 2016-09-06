@@ -52,18 +52,19 @@ $(document).ready(function() {
   });
 
   function newAlbumError() {
-    console.log('ERROR')
+    // console.log('ERROR')
   };
 
   function newAlbumSuccess(json) {
-    console.log("I'm Here!")
+    // console.log("I'm Here!")
     $('#album-form input').val('');
     allAlbums.push(json);
-    renderAlbum();
+    renderAlbum(json);
   }
 
   function renderAlbum(album) {
     console.log('rendering album:', album);
+    album.genres = album.genres.join(', ');
     var albumsHtml = template(album);
     $albums.append(albumsHtml);
   }

@@ -18,10 +18,20 @@ function index(req, res) {
 }
 
 function create(req, res) {
-  console.log(req.body);
-  // var newAlbum = new db.Album({
-  //   name:
-  // });
+  // console.log(req.body);
+  var newAlbum = new db.Album({
+    name: req.body.name,
+    artistName: req.body.artistName,
+    releaseDate: req.body.releaseDate,
+    genres: req.body.genres.split(', ')
+  });
+  newAlbum.save(function(err, album){
+    if (err){
+      return console.log('create error '+ err);
+    }
+    console.log('created ', album.name);
+    res.json(album);
+  });
 }
 
 function show(req, res) {
