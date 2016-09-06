@@ -13,7 +13,7 @@ app.use(express.static(__dirname + '/public'));
 app.use('/vendor', express.static(__dirname + '/bower_components'));
 
 var controllers = require('./controllers');
-
+var db = require('./models');
 
 /**********
  * ROUTES *
@@ -32,7 +32,7 @@ app.get('/', function homepage (req, res) {
  * JSON API Endpoints
  */
 
-app.get('/api', controllers.api.index);
+app.get('/api/albums', controllers.albums.index);
 
 /**********
  * SERVER *
